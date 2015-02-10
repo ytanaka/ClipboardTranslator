@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.testapp.clipboardtranslator" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:name="com.example.testapp.clipboardtranslator.MyApplication"
+        android:theme="@android:style/Theme.Holo.Light" >
+        <activity
+            android:name="com.example.testapp.clipboardtranslator.activity.MainActivity"
+            android:launchMode="singleTask"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.testapp.clipboardtranslator.activity.SettingActivity"
+            android:parentActivityName="com.example.testapp.clipboardtranslator.activity.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.testapp.clipboardtranslator.activity.AboutActivity"
+            android:parentActivityName="com.example.testapp.clipboardtranslator.activity.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.testapp.clipboardtranslator.activity.DicActivity"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+
+        <service android:name="com.example.testapp.clipboardtranslator.service.ClipboardListenerService" />
+    </application>
+
+</manifest>
