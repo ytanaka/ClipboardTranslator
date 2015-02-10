@@ -17,6 +17,6 @@ public class MyPreference {
         return pref.getBoolean(KEY_IS_DISPLAY_DIC_BOTTOM, true);
     }
     public void setDisplayDicBottom(boolean b) {
-        pref.edit().putBoolean(KEY_IS_DISPLAY_DIC_BOTTOM, b).commit();
+        pref.edit().putBoolean(KEY_IS_DISPLAY_DIC_BOTTOM, b).apply();
     }
 }

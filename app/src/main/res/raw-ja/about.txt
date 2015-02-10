@@ -1,17 +1,17 @@
 <pre><code>
-<h3>This app allows you to import the following dictionary data</h3>
-English-Japanese dictionary data in the public domain (ejdic-hand)<br>
+<h3>このアプリは、以下の辞書データの読み込みに対応しています</h3>
+パブリックドメインの英和辞書データ (ejdic-hand)<br>
 <a href='http://kujirahand.com/web-tools/EJDictFreeDL.php'>http://kujirahand.com/web-tools/EJDictFreeDL.php</a><br>
 <br>
-GENE95 dictionary (English-Japanese)<br>
+GENE95 辞書<br>
 <a href='http://www.namazu.org/~tsuchiya/sdic/data/gene.html'>http://www.namazu.org/~tsuchiya/sdic/data/gene.html</a><br>
 <br>
 <br>
 
-<h3>This app uses the following libraries.</h3>
+<h3>このアプリは、以下のライブラリを使用しています。</h3>
 jtar<br>
 <a href='https://github.com/kamranzafar/jtar'>https://github.com/kamranzafar/jtar</a><br>
-License<br>
+ライセンス<br>
 <a href='https://github.com/kamranzafar/jtar/blob/master/LICENSE.txt'>Apache License 2.0</a><br>
 
 </pre></code>
