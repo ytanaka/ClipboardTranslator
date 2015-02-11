@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="app_name_short">Clip翻訳</string>
     <string name="app_name">クリップボード翻訳</string>
 
     <string name="title_setting">設定</string>
@@ -22,11 +23,14 @@
     <string name="import_dic">インストール</string>
     <string name="delete_dic">削除</string>
     <string name="explanation_to_user_how_to_download">これからブラウザを開きます。\n開いたブラウザ画面で「%1$s」をタップしてファイルをダウンロードしてください。\nダウンロードが終わったら、この画面に戻ってください。\n※）パソコンでダウンロードしたファイルをAndroidに転送してもかまいません。</string>
-    <string name="confirm_search_file_browser_in_google_play">ファイル選択アプリが見つかりませんでした。Google Play で探しますか？</string>
+    <string name="confirm_search_file_browser_in_google_play">ファイル選択アプリが見つかりませんでした。\nGoogle Play で探しますか？</string>
     <string name="explanation_to_user_how_to_import">これからファイル選択画面を開きます。\nダウンロードディレクトリにある「%1$s」を選択してください。\n※）ファイルを選択できなかった場合は、GooglePlayで "ファイラー"で検索してアプリをインストールしてください。</string>
-    <string name="confirm_delete_dictionary_data">アプリに取り込んだ辞書ファイルを削除します。よろしいですか？</string>
+    <string name="confirm_delete_dictionary_data">アプリに取り込んだ辞書ファイルを削除します。\nよろしいですか？</string>
     <string name="importing_dictionary">辞書データ登録中</string>
     <string name="failed_to_import_dictionary">辞書登録失敗</string>
-    <string name="notify_finished_import_dictionary">辞書登録が完了しました。ダウンロードしたファイルは削除して構いません。</string>
+    <string name="notify_finished_import_dictionary">辞書登録が完了しました。\nダウンロードしたファイルは削除して構いません。</string>
+    <string name="notification_message">クリップボードを見ています</string>
+    <string name="not_found_google_translation">Google翻訳が見つかりませんでした</string>
+
 
 </resources>

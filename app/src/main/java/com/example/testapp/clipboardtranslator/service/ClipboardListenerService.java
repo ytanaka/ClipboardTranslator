@@ -125,7 +125,7 @@ public class ClipboardListenerService extends Service implements ClipboardManage
             context.startActivity(intent);
             return;
         }
-        Toast.makeText(context, "Google翻訳が見つかりませんでした", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, R.string.not_found_google_translation, Toast.LENGTH_LONG).show();
     }
 
     private void showNotification() {
@@ -134,11 +134,11 @@ public class ClipboardListenerService extends Service implements ClipboardManage
 
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
         Notification.Builder builder = new Notification.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.ic_stat)
                 .setWhen(0)
                 .setLargeIcon(largeIcon)
-                .setContentTitle("TITLE")
-                .setContentText("TEXT")
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.notification_message))
                 .setOngoing(true)
                 .setContentIntent(pIntent)
                 .setAutoCancel(false);
