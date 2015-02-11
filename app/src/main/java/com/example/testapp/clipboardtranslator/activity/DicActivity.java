@@ -4,15 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.testapp.clipboardtranslator.MyApplication;
 import com.example.testapp.clipboardtranslator.R;
 import com.example.testapp.clipboardtranslator.db.DB;
 import com.example.testapp.clipboardtranslator.service.ClipboardListenerService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DicActivity extends Activity {
     private static final String TAG = DicActivity.class.getSimpleName();
@@ -68,21 +72,60 @@ public class DicActivity extends Activity {
             }
         });
 
-        StringBuilder sb = new StringBuilder();
+        List<Item> items = new ArrayList<>();
         for (DB.Result i: MyApplication.instance(this).getDb().find(word, 200)) {
-            sb.append("<b>").append(i.word).append("</b><br>");
+            items.add(new Item(i.word + (i.type == DB.TYPE_HAND ? " (H)" : " (G)"), null));
             for (String s: i.desc.split("\n")) {
-                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;").append(s).append("<br>");
+                items.add(new Item(null, s));
             }
         }
-        TextView tv = (TextView) findViewById(R.id.textView_dic);
-        tv.setText(Html.fromHtml(sb.toString()));
-        tv.setMovementMethod(new ScrollingMovementMethod());
+        MyAdapter adapter = new MyAdapter(this, items);
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
+        listView.setDividerHeight(0);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         finish();
+    }
+
+    static class Item {
+        String title;
+        String content;
+        Item(String title, String content) {
+            this.title = title;
+            this.content = content;
+        }
+    }
+    class MyAdapter extends ArrayAdapter<Item> {
+        public MyAdapter(Context context, List<Item> items) {
+            super(context, R.layout.list_item_dic, items);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = getLayoutInflater().inflate(R.layout.list_item_dic, null);
+            }
+            Tag tag = (Tag) convertView.getTag();
+            if (tag == null) {
+                tag = new Tag();
+                tag.tvTitle = (TextView) convertView.findViewById(R.id.textView_title);
+                tag.tvContent = (TextView) convertView.findViewById(R.id.textView_content);
+            }
+            Item i = getItem(position);
+            tag.tvTitle.setVisibility(i.title != null ? View.VISIBLE : View.GONE);
+            tag.tvContent.setVisibility(i.content != null ? View.VISIBLE : View.GONE);
+            tag.tvTitle.setText(i.title);
+            tag.tvContent.setText(i.content);
+            return convertView;
+        }
+
+        class Tag {
+            TextView tvTitle;
+            TextView tvContent;
+        }
     }
 }
