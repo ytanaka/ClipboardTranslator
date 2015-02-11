@@ -3,4 +3,29 @@
 
     <string name="app_name">Clipboard Translator</string>
 
+    <string name="title_setting">Setting</string>
+    <string name="title_about">About</string>
+
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="install_google_translate">Install Google Translate</string>
+    <string name="translate">Translate</string>
+    <string name="display_position">Display position</string>
+    <string name="display_position_description">When word is found in the local dictionary, app displays the translation over the original screen.\n(if not found, start the Google translated)</string>
+    <string name="top">Top</string>
+    <string name="below">Below</string>
+    <string name="dictionary_import">Dictionary import</string>
+    <string name="dictionary_description_hand">English-Japanese dictionary in the public domain (ejdic-hand)</string>
+    <string name="dictionary_description_gene95">GENE95 dictionary</string>
+    <string name="__words_imported">%1$d words has been imported</string>
+    <string name="download_dic">Download</string>
+    <string name="import_dic">Import</string>
+    <string name="delete_dic">Delete</string>
+    <string name="explanation_to_user_how_to_download">Browser will open soon.\nIn the browser, please download the file by tapping the "%1$s".\nDownload is complete, please return to this screen.\n(it does not matter even if you transfer a file that you downloaded in the PC to Android.)</string>
+    <string name="confirm_search_file_browser_in_google_play">File browser was not found. Do you looking for in Google Play?</string>
+    <string name="explanation_to_user_how_to_import">File selection screen will open soon.\nPlease select a file "%1$s" that is in the Download directory.\nIf you are unable to select a file, please install the app found by searching for "filer" in GooglePlay.</string>
+    <string name="confirm_delete_dictionary_data">I will remove the imported dictionary. Are you sure?</string>
+    <string name="importing_dictionary">Importing dictionary</string>
+    <string name="failed_to_import_dictionary">Failed to import the dictionary</string>
+
 </resources>

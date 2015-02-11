@@ -69,15 +69,15 @@ public class SettingActivity extends Activity {
         findViewById(R.id.button_delete2).setVisibility(wordCount2 > 0 ? View.VISIBLE : View.GONE);
         TextView tvCount1 = (TextView) findViewById(R.id.textView_dic_count1);
         TextView tvCount2 = (TextView) findViewById(R.id.textView_dic_count2);
-        tvCount1.setText("現在 " + wordCount1 + " 件の単語が登録済みです");
-        tvCount2.setText("現在 " + wordCount2 + " 件の単語が登録済みです");
+        tvCount1.setText(getString(R.string.__words_imported, wordCount1));
+        tvCount2.setText(getString(R.string.__words_imported, wordCount2));
     }
 
     public void onButtonClicked_download1(View v) {
         String url = "http://kujirahand.com/web-tools/EJDictFreeDL.php";
         final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Util.showMsg(this, "これからブラウザを開きます。\n開いたブラウザ画面で、「辞書データ(テキスト形式)」をタップしてファイルをダウンロードしてください。\nダウンロードが終わったら、この画面に戻ってください。\n※）パソコンでダウンロードしたファイルをAndroidに転送してもかまいません。", new Runnable() {
+        Util.showMsg(this, getString(R.string.explanation_to_user_how_to_download, "辞書データ(テキスト形式)"), new Runnable() {
             @Override
             public void run() {
                 startActivity(intent);
@@ -89,7 +89,7 @@ public class SettingActivity extends Activity {
         final Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("application/zip");
         if (getPackageManager().resolveActivity(intent, 0) == null) {
-            Util.showMsg(this, "ファイル選択アプリが見つかりませんでした。Google Play で探しますか？", new Runnable() {
+            Util.showMsg(this, getString(R.string.confirm_search_file_browser_in_google_play), new Runnable() {
                 @Override
                 public void run() {
                     Intent goToMarket = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("market://search?q=filer"));
@@ -99,7 +99,7 @@ public class SettingActivity extends Activity {
             return;
         }
 
-        Util.showMsg(this, "これからファイル選択画面を開きます。\nAndroidのダウンロードディレクトリにある ejdic-hand-txt.zip を選択してください。\n※）端末内部のZIPファイルを選択できない場合は、GooglePlayで \"ファイラー\"で検索してアプリをインストールしてください。", new Runnable() {
+        Util.showMsg(this, getString(R.string.explanation_to_user_how_to_import, "ejdic-hand-txt.zip"), new Runnable() {
             @Override
             public void run() {
                 startActivityForResult(intent, 101);
@@ -108,7 +108,7 @@ public class SettingActivity extends Activity {
     }
 
     public void onButtonClicked_delete1(View v) {
-        Util.showMsg(this, "アプリに取り込んだ辞書ファイルを削除します。よろしいですか？", new Runnable() {
+        Util.showMsg(this, getString(R.string.confirm_delete_dictionary_data), new Runnable() {
             @Override
             public void run() {
                 mDb.remove(DB.TYPE_HAND);
@@ -121,7 +121,7 @@ public class SettingActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
         Log.v(TAG, "" + data);
         if (requestCode == 101 && resultCode == RESULT_OK) {
-            new ProgressAsyncTask(this, "辞書データ登録中") {
+            new ProgressAsyncTask(this, getString(R.string.importing_dictionary)) {
                 int count = 0;
                 @Override
                 protected void run() {
@@ -129,7 +129,7 @@ public class SettingActivity extends Activity {
                 }
                 @Override
                 protected void finished() {
-                    if (count == 0) Toast.makeText(SettingActivity.this, "辞書登録失敗", Toast.LENGTH_LONG).show();
+                    if (count == 0) Toast.makeText(SettingActivity.this, getString(R.string.failed_to_import_dictionary), Toast.LENGTH_LONG).show();
                     refresh();
                 }
             };

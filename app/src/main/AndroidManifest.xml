@@ -19,11 +19,11 @@
         </activity>
         <activity
             android:name="com.example.testapp.clipboardtranslator.activity.SettingActivity"
-            android:parentActivityName="com.example.testapp.clipboardtranslator.activity.MainActivity" >
+            android:label="@string/title_setting" >
         </activity>
         <activity
             android:name="com.example.testapp.clipboardtranslator.activity.AboutActivity"
-            android:parentActivityName="com.example.testapp.clipboardtranslator.activity.MainActivity" >
+            android:label="@string/title_about" >
         </activity>
         <activity
             android:name="com.example.testapp.clipboardtranslator.activity.DicActivity"

@@ -19,16 +19,16 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start"
-            android:id="@+id/buttonStart"
-            android:onClick="onButtonClicked_start" />
+            android:text="@string/on"
+            android:onClick="onButtonClicked_start"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stop"
-            android:id="@+id/buttonStop"
-            android:onClick="onButtonClicked_stop" />
+            android:text="@string/off"
+            android:onClick="onButtonClicked_stop"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,11 +41,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Google翻訳をインストール"
+            android:text="@string/install_google_translate"
             android:id="@+id/textView"
             />
 
         <ImageButton
+            android:contentDescription="@string/install_google_translate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton"
@@ -58,7 +59,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="設定"
+        android:text="@string/title_setting"
         android:id="@+id/button_setting"
         android:layout_margin="10dp"
         android:onClick="onButtonClicked_setting"/>
@@ -66,7 +67,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About"
+        android:text="@string/title_about"
         android:id="@+id/button_about"
         android:layout_margin="10dp"
         android:onClick="onButtonClicked_about"/>

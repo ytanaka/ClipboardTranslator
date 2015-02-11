@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:id="@+id/layout_root">
@@ -22,22 +23,25 @@
         >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Small Text"
+            android:text="Word"
             android:id="@+id/textView_title"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:textColor="@android:color/black"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="翻訳"
+            android:layout_height="30sp"
+            android:text="@string/translate"
             android:id="@+id/button_translate"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:singleLine="false"
+            android:background="@android:drawable/btn_default_small" />
     </LinearLayout>
 
     <LinearLayout
