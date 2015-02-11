@@ -61,22 +61,30 @@ public class Util {
         }
     }
 
-    public static void showMsg(Context context, String msg, final Runnable okHandler) {
+    public static void showMsgBox(Context context, String msg) {
+        showOKCancelMsgBox(context, msg, null, false);
+    }
+    public static void showOKCancelMsgBox(Context context, String msg, final Runnable okHandler) {
+        showOKCancelMsgBox(context, msg, okHandler, true);
+    }
+    private static void showOKCancelMsgBox(Context context, String msg, final Runnable okHandler, boolean showCancelButton) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.app_name);
         builder.setMessage(msg);
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                okHandler.run();
+                if (okHandler != null) okHandler.run();
             }
         });
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        if (showCancelButton) {
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
                 /* */
-            }
-        });
+                }
+            });
+        }
         builder.setCancelable(true);
         builder.create().show();
     }

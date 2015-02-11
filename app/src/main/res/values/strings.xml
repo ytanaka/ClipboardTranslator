@@ -21,11 +21,12 @@
     <string name="download_dic">Download</string>
     <string name="import_dic">Import</string>
     <string name="delete_dic">Delete</string>
-    <string name="explanation_to_user_how_to_download">Browser will open soon.\nIn the browser, please download the file by tapping the "%1$s".\nDownload is complete, please return to this screen.\n(it does not matter even if you transfer a file that you downloaded in the PC to Android.)</string>
+    <string name="explanation_to_user_how_to_download">Browser will open soon.\nIn the browser, please download the file by tapping the \"%1$s\".\nDownload is complete, please return to this screen.\n(it does not matter even if you transfer a file that you downloaded in the PC to Android.)</string>
     <string name="confirm_search_file_browser_in_google_play">File browser was not found. Do you looking for in Google Play?</string>
-    <string name="explanation_to_user_how_to_import">File selection screen will open soon.\nPlease select a file "%1$s" that is in the Download directory.\nIf you are unable to select a file, please install the app found by searching for "filer" in GooglePlay.</string>
+    <string name="explanation_to_user_how_to_import">File selection screen will open soon.\nPlease select a file \"%1$s\" that is in the Download directory.\nIf you are unable to select a file, please install the app found by searching for "filer" in GooglePlay.</string>
     <string name="confirm_delete_dictionary_data">I will remove the imported dictionary. Are you sure?</string>
     <string name="importing_dictionary">Importing dictionary</string>
     <string name="failed_to_import_dictionary">Failed to import the dictionary</string>
+    <string name="notify_finished_import_dictionary">Import of dictionary is now complete. The downloaded file can safely be deleted.</string>
 
 </resources>

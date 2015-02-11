@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,11 +22,15 @@ import com.example.testapp.clipboardtranslator.db.DicFileHand;
 import com.example.testapp.clipboardtranslator.util.ProgressAsyncTask;
 import com.example.testapp.clipboardtranslator.util.Util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SettingActivity extends Activity {
     public static final String TAG = SettingActivity.class.getSimpleName();
 
     private DB mDb;
     private MyPreference mPref;
+    private List<DicItem> dicItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,14 @@ public class SettingActivity extends Activity {
         });
         radioGroup.check(mPref.isDisplayDicBottom() ? R.id.radioButton_display_bottom : R.id.radioButton_display_top);
 
+        dicItems.add(new DicItem(DB.TYPE_HAND, 101,
+                R.id.button_download1, R.id.button_extract1, R.id.button_delete1, R.id.textView_dic_count1,
+                "http://kujirahand.com/web-tools/EJDictFreeDL.php", "辞書データ(テキスト形式)",
+                "ejdic-hand-txt.zip", "application/zip"));
+        dicItems.add(new DicItem(DB.TYPE_GENE95, 102,
+                R.id.button_download2, R.id.button_extract2, R.id.button_delete2, R.id.textView_dic_count2,
+                "http://www.namazu.org/~tsuchiya/sdic/data/gene.html", "gene95.tar.gz (tar+gzip圧縮形式)",
+                "gene95.tar.???", "application/*"));
         refresh();
     }
 
@@ -58,138 +71,124 @@ public class SettingActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void refresh() {
-        int wordCount1 = mDb.count(DB.TYPE_HAND);
-        int wordCount2 = mDb.count(DB.TYPE_GENE95);
-        findViewById(R.id.button_download1).setVisibility(wordCount1 == 0 ? View.VISIBLE : View.GONE);
-        findViewById(R.id.button_extract1).setVisibility(wordCount1 == 0 ? View.VISIBLE : View.GONE);
-        findViewById(R.id.button_delete1).setVisibility(wordCount1 > 0 ? View.VISIBLE : View.GONE);
-        findViewById(R.id.button_download2).setVisibility(wordCount2 == 0 ? View.VISIBLE : View.GONE);
-        findViewById(R.id.button_extract2).setVisibility(wordCount2 == 0 ? View.VISIBLE : View.GONE);
-        findViewById(R.id.button_delete2).setVisibility(wordCount2 > 0 ? View.VISIBLE : View.GONE);
-        TextView tvCount1 = (TextView) findViewById(R.id.textView_dic_count1);
-        TextView tvCount2 = (TextView) findViewById(R.id.textView_dic_count2);
-        tvCount1.setText(getString(R.string.__words_imported, wordCount1));
-        tvCount2.setText(getString(R.string.__words_imported, wordCount2));
-    }
+    class DicItem {
+        int fileGetRequestCode;
+        int dicType;
+        Button buttonDownload;
+        Button buttonExtract;
+        Button buttonDelete;
+        TextView textViewWordCount;
+        String url;
+        String clickTargetText;
+        String filename;
+        String fileType;
 
-    public void onButtonClicked_download1(View v) {
-        String url = "http://kujirahand.com/web-tools/EJDictFreeDL.php";
-        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Util.showMsg(this, getString(R.string.explanation_to_user_how_to_download, "辞書データ(テキスト形式)"), new Runnable() {
-            @Override
-            public void run() {
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void onButtonClicked_extract1(View v) {
-        final Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("application/zip");
-        if (getPackageManager().resolveActivity(intent, 0) == null) {
-            Util.showMsg(this, getString(R.string.confirm_search_file_browser_in_google_play), new Runnable() {
+        public DicItem(int dicType, int fileGetRequestCode, int buttonDownload, int buttonExtract, int buttonDelete, int textViewWordCount, String url, String clickTargetText, String filename, String fileType) {
+            this.dicType = dicType;
+            this.fileGetRequestCode = fileGetRequestCode;
+            this.buttonDownload = (Button) findViewById(buttonDownload);
+            this.buttonExtract  = (Button) findViewById(buttonExtract);
+            this.buttonDelete   = (Button) findViewById(buttonDelete);
+            this.textViewWordCount = (TextView) findViewById(textViewWordCount);
+            this.url = url;
+            this.clickTargetText = clickTargetText;
+            this.filename = filename;
+            this.fileType = fileType;
+            setListener();
+        }
+        private void setListener() {
+            buttonDownload.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void run() {
-                    Intent goToMarket = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("market://search?q=filer"));
-                    startActivity(goToMarket);
+                public void onClick(View v) {
+                    final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Util.showOKCancelMsgBox(SettingActivity.this, getString(R.string.explanation_to_user_how_to_download, clickTargetText), new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(intent);
+                        }
+                    });
                 }
             });
-            return;
+            buttonExtract.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    intent.setType(fileType);
+                    if (getPackageManager().resolveActivity(intent, 0) == null) {
+                        Util.showOKCancelMsgBox(SettingActivity.this, getString(R.string.confirm_search_file_browser_in_google_play), new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent goToMarket = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("market://search?q=filer"));
+                                startActivity(goToMarket);
+                            }
+                        });
+                        return;
+                    }
+                    Util.showOKCancelMsgBox(SettingActivity.this, getString(R.string.explanation_to_user_how_to_import, filename), new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivityForResult(intent, fileGetRequestCode);
+                        }
+                    });
+                }
+            });
+            buttonDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Util.showOKCancelMsgBox(SettingActivity.this, getString(R.string.confirm_delete_dictionary_data), new Runnable() {
+                        @Override
+                        public void run() {
+                            mDb.remove(dicType);
+                            refresh();
+                        }
+                    });
+                }
+            });
+        }
+        // ボタンなどの画面部品を更新
+        public void refreshDisplay() {
+            int wordCount = mDb.count(dicType);
+            buttonDownload.setVisibility(wordCount == 0 ? View.VISIBLE : View.GONE);
+            buttonExtract.setVisibility(wordCount == 0 ? View.VISIBLE : View.GONE);
+            buttonDelete.setVisibility(wordCount > 0 ? View.VISIBLE : View.GONE);
+            textViewWordCount.setText(getString(R.string.__words_imported, wordCount));
+        }
+        // ファイル選択が成功したら、ファイルをインポートする
+        public void onActivityResult(int requestCode, int resultCode, final Intent data) {
+            if (requestCode != fileGetRequestCode) return;
+            if (resultCode != RESULT_OK) return;
+            new ProgressAsyncTask(SettingActivity.this, getString(R.string.importing_dictionary)) {
+                int count = 0;
+                @Override
+                protected void run() {
+                    if (dicType == DB.TYPE_HAND) {
+                        count = DicFileHand.extractAndInsertToDb(SettingActivity.this, data.getData(), notifier);
+                    } else if (dicType == DB.TYPE_GENE95) {
+                        count = DicFileGene95.extractAndInsertToDb(SettingActivity.this, data.getData(), notifier);
+                    }
+                }
+                @Override
+                protected void finished() {
+                    if (count == 0) {
+                        Toast.makeText(SettingActivity.this, getString(R.string.failed_to_import_dictionary), Toast.LENGTH_LONG).show();
+                    } else {
+                        Util.showMsgBox(SettingActivity.this, getString(R.string.notify_finished_import_dictionary));
+                    }
+                    refresh();
+                }
+            };
         }
 
-        Util.showMsg(this, getString(R.string.explanation_to_user_how_to_import, "ejdic-hand-txt.zip"), new Runnable() {
-            @Override
-            public void run() {
-                startActivityForResult(intent, 101);
-            }
-        });
     }
 
-    public void onButtonClicked_delete1(View v) {
-        Util.showMsg(this, getString(R.string.confirm_delete_dictionary_data), new Runnable() {
-            @Override
-            public void run() {
-                mDb.remove(DB.TYPE_HAND);
-                refresh();
-            }
-        });
+    private void refresh() {
+        for (DicItem di : dicItems) di.refreshDisplay();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
-        Log.v(TAG, "" + data);
-        if (requestCode == 101 && resultCode == RESULT_OK) {
-            new ProgressAsyncTask(this, getString(R.string.importing_dictionary)) {
-                int count = 0;
-                @Override
-                protected void run() {
-                    count = DicFileHand.extractAndInsertToDb(SettingActivity.this, data.getData(), notifier);
-                }
-                @Override
-                protected void finished() {
-                    if (count == 0) Toast.makeText(SettingActivity.this, getString(R.string.failed_to_import_dictionary), Toast.LENGTH_LONG).show();
-                    refresh();
-                }
-            };
-        } else if (requestCode == 102 && resultCode == RESULT_OK) {
-            new ProgressAsyncTask(this, "辞書データ登録中") {
-                int count = 0;
-                @Override
-                protected void run() {
-                    count = DicFileGene95.extractAndInsertToDb(SettingActivity.this, data.getData(), notifier);
-                }
-                @Override
-                protected void finished() {
-                    if (count == 0) Toast.makeText(SettingActivity.this, "辞書登録失敗", Toast.LENGTH_LONG).show();
-                    refresh();
-                }
-            };
-        }
-    }
-
-    public void onButtonClicked_download2(View v) {
-        String url = "http://www.namazu.org/~tsuchiya/sdic/data/gene.html";
-        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Util.showMsg(this, "これからブラウザを開きます。\n開いたブラウザ画面で、「gene95.tar.gz (tar+gzip圧縮形式)」をタップしてファイルをダウンロードしてください。\nダウンロードが終わったら、この画面に戻ってください。\n※）パソコンでダウンロードしたファイルをAndroidに転送してもかまいません。", new Runnable() {
-            @Override
-            public void run() {
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void onButtonClicked_extract2(View v) {
-        final Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("application/*");
-        if (getPackageManager().resolveActivity(intent, 0) == null) {
-            Util.showMsg(this, "ファイル選択アプリが見つかりませんでした。Google Play で探しますか？", new Runnable() {
-                @Override
-                public void run() {
-                    Intent goToMarket = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("market://search?q=filer"));
-                    startActivity(goToMarket);
-                }
-            });
-            return;
-        }
-
-        Util.showMsg(this, "これからファイル選択画面を開きます。\nAndroidのダウンロードディレクトリにある gene95.tar.gz を選択してください。\n※）端末内部のファイルを選択できない場合は、GooglePlayで \"ファイラー\"で検索してアプリをインストールしてください。", new Runnable() {
-            @Override
-            public void run() {
-                startActivityForResult(intent, 102);
-            }
-        });
-    }
-
-    public void onButtonClicked_delete2(View v) {
-        Util.showMsg(this, "アプリに取り込んだ辞書ファイルを削除します。よろしいですか？", new Runnable() {
-            @Override
-            public void run() {
-                mDb.remove(DB.TYPE_GENE95);
-                refresh();
-            }
-        });
+        Log.v(TAG, "onActivityResult(" + data + ")");
+        for (DicItem di : dicItems) di.onActivityResult(requestCode, resultCode, data);
     }
 }

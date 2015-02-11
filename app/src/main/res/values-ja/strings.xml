@@ -27,5 +27,6 @@
     <string name="confirm_delete_dictionary_data">アプリに取り込んだ辞書ファイルを削除します。よろしいですか？</string>
     <string name="importing_dictionary">辞書データ登録中</string>
     <string name="failed_to_import_dictionary">辞書登録失敗</string>
+    <string name="notify_finished_import_dictionary">辞書登録が完了しました。ダウンロードしたファイルは削除して構いません。</string>
 
 </resources>
