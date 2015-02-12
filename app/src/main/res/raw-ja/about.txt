@@ -1,4 +1,10 @@
 <pre><code>
+<h3>クリップボード翻訳</h3>
+ホームページ<br>
+<a href='http://ytanaka.github.io/cliptrans'>http://ytanaka.github.io/cliptrans</a><br>
+<br>
+<br>
+
 <h3>このアプリは、以下の辞書データの読み込みに対応しています</h3>
 パブリックドメインの英和辞書データ (ejdic-hand)<br>
 <a href='http://kujirahand.com/web-tools/EJDictFreeDL.php'>http://kujirahand.com/web-tools/EJDictFreeDL.php</a><br>

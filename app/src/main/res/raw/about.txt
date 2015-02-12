@@ -1,4 +1,10 @@
 <pre><code>
+<h3>Clipboard Translate</h3>
+Homepage<br>
+<a href='http://ytanaka.github.io/cliptrans'>http://ytanaka.github.io/cliptrans</a><br>
+<br>
+<br>
+
 <h3>This app allows you to import the following dictionary data</h3>
 English-Japanese dictionary data in the public domain (ejdic-hand)<br>
 <a href='http://kujirahand.com/web-tools/EJDictFreeDL.php'>http://kujirahand.com/web-tools/EJDictFreeDL.php</a><br>
