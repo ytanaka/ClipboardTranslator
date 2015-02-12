@@ -116,6 +116,7 @@ public class ClipboardListenerService extends Service implements ClipboardManage
         intent.putExtra(Intent.EXTRA_TEXT, s);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
         PackageManager pm = context.getPackageManager();
         for (ResolveInfo res: pm.queryIntentActivities(intent, PackageManager.GET_RESOLVED_FILTER)) {

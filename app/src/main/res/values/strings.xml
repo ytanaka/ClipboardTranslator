@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name_short">Clip Trans</string>
-    <string name="app_name">Clipboard Translator</string>
+    <string name="app_name">Clipboard Translate</string>
+    <string name="app_name_short">ClipTrans</string>
 
     <string name="title_setting">Setting</string>
     <string name="title_about">About</string>
@@ -29,7 +29,9 @@
     <string name="importing_dictionary">Importing dictionary</string>
     <string name="failed_to_import_dictionary">Failed to import the dictionary</string>
     <string name="notify_finished_import_dictionary">Import of dictionary is now complete. \nThe downloaded file can safely be deleted.</string>
-    <string name="notification_message">I am looking at the clipboard</string>
+    <string name="notification_message">Please copy the string to the clipboard, I will translate</string>
     <string name="not_found_google_translation">Google translation not found</string>
+    <string name="dic_type_hand">ejdic-hand</string>
+    <string name="dic_type_gene95">GENE95</string>
 
 </resources>

@@ -67,14 +67,34 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/dictionary_description_hand" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/__words_imported"
-            android:id="@+id/textView_dic_count1"
-            android:layout_marginLeft="10dp"
-            tools:ignore="RtlHardcoded" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/__words_imported"
+                android:id="@+id/textView_dic_count1"
+                android:layout_marginLeft="10dp"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dic_type_hand"
+                android:textSize="12sp"
+                android:id="@+id/textView_dic_type"
+                android:layout_marginLeft="5dp"
+                android:textColor="@android:color/black"
+                tools:ignore="HardcodedText,RtlHardcoded"
+                android:background="@drawable/dic_icon_hand"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -123,14 +143,33 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/dictionary_description_gene95" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/__words_imported"
-            android:id="@+id/textView_dic_count2"
-            android:layout_marginLeft="10dp"
-            tools:ignore="RtlHardcoded" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/__words_imported"
+                android:id="@+id/textView_dic_count2"
+                android:layout_marginLeft="10dp"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dic_type_gene95"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@android:color/black"
+                tools:ignore="HardcodedText,RtlHardcoded"
+                android:background="@drawable/dic_icon_gene95"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name_short">Clip翻訳</string>
     <string name="app_name">クリップボード翻訳</string>
+    <string name="app_name_short">クリップ翻訳</string>
 
     <string name="title_setting">設定</string>
     <string name="title_about">このアプリケーションについて</string>
@@ -29,8 +29,10 @@
     <string name="importing_dictionary">辞書データ登録中</string>
     <string name="failed_to_import_dictionary">辞書登録失敗</string>
     <string name="notify_finished_import_dictionary">辞書登録が完了しました。\nダウンロードしたファイルは削除して構いません。</string>
-    <string name="notification_message">クリップボードを見ています</string>
+    <string name="notification_message">クリップボードにコピーした文字列を翻訳します</string>
     <string name="not_found_google_translation">Google翻訳が見つかりませんでした</string>
+    <string name="dic_type_hand">ejdic-hand</string>
+    <string name="dic_type_gene95">GENE95</string>
 
 
 </resources>

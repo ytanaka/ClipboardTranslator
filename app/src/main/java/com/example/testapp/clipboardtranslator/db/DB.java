@@ -90,7 +90,7 @@ public class DB extends SQLiteOpenHelper {
     }
 
     public List<Result> find(String word, int limit) {
-        Cursor c = db.query(TABLE_NAME, ALL_COLS, COL_WORD + " like ?", new String[] { word + '%' }, null, null, COL_WORD + " COLLATE NOCASE");
+        Cursor c = db.query(TABLE_NAME, ALL_COLS, COL_WORD + " like ?", new String[] { word + '%' }, null, null, COL_WORD + " COLLATE NOCASE," + COL_ID);
         List<Result> list = new ArrayList<>();
         while (c.moveToNext()) {
             list.add(new Result(c));
