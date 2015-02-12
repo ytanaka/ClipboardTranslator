@@ -1,4 +1,4 @@
-package com.example.testapp.clipboardtranslator.activity;
+package io.github.ytanaka.cliptrans.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -8,8 +8,8 @@ import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.testapp.clipboardtranslator.R;
-import com.example.testapp.clipboardtranslator.util.Util;
+import io.github.ytanaka.cliptrans.R;
+import io.github.ytanaka.cliptrans.util.Util;
 
 public class AboutActivity extends Activity {
     public static final String TAG = AboutActivity.class.getSimpleName();

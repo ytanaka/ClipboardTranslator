@@ -1,4 +1,4 @@
-package com.example.testapp.clipboardtranslator;
+package io.github.ytanaka.cliptrans;
 
 import android.content.Context;
 import android.content.SharedPreferences;

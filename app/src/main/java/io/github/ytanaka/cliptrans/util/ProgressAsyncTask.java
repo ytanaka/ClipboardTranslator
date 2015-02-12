@@ -1,4 +1,4 @@
-package com.example.testapp.clipboardtranslator.util;
+package io.github.ytanaka.cliptrans.util;
 
 import android.app.ProgressDialog;
 import android.content.Context;

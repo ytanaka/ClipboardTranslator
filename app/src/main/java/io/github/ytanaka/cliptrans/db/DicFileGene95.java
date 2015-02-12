@@ -1,11 +1,11 @@
-package com.example.testapp.clipboardtranslator.db;
+package io.github.ytanaka.cliptrans.db;
 
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
-import com.example.testapp.clipboardtranslator.MyApplication;
-import com.example.testapp.clipboardtranslator.util.Util;
+import io.github.ytanaka.cliptrans.MyApplication;
+import io.github.ytanaka.cliptrans.util.Util;
 
 import org.kamranzafar.jtar.TarEntry;
 import org.kamranzafar.jtar.TarInputStream;

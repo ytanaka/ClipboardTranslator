@@ -1,4 +1,4 @@
-package com.example.testapp.clipboardtranslator.activity;
+package io.github.ytanaka.cliptrans.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -13,14 +13,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.testapp.clipboardtranslator.MyApplication;
-import com.example.testapp.clipboardtranslator.MyPreference;
-import com.example.testapp.clipboardtranslator.R;
-import com.example.testapp.clipboardtranslator.db.DB;
-import com.example.testapp.clipboardtranslator.db.DicFileGene95;
-import com.example.testapp.clipboardtranslator.db.DicFileHand;
-import com.example.testapp.clipboardtranslator.util.ProgressAsyncTask;
-import com.example.testapp.clipboardtranslator.util.Util;
+import io.github.ytanaka.cliptrans.MyApplication;
+import io.github.ytanaka.cliptrans.MyPreference;
+import io.github.ytanaka.cliptrans.R;
+import io.github.ytanaka.cliptrans.db.DB;
+import io.github.ytanaka.cliptrans.db.DicFileGene95;
+import io.github.ytanaka.cliptrans.db.DicFileHand;
+import io.github.ytanaka.cliptrans.util.ProgressAsyncTask;
+import io.github.ytanaka.cliptrans.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;

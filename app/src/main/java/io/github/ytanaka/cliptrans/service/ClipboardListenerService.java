@@ -1,4 +1,4 @@
-package com.example.testapp.clipboardtranslator.service;
+package io.github.ytanaka.cliptrans.service;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -18,10 +18,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.testapp.clipboardtranslator.activity.DicActivity;
-import com.example.testapp.clipboardtranslator.activity.MainActivity;
-import com.example.testapp.clipboardtranslator.MyApplication;
-import com.example.testapp.clipboardtranslator.R;
+import io.github.ytanaka.cliptrans.R;
+import io.github.ytanaka.cliptrans.activity.DicActivity;
+import io.github.ytanaka.cliptrans.activity.MainActivity;
+import io.github.ytanaka.cliptrans.MyApplication;
 
 public class ClipboardListenerService extends Service implements ClipboardManager.OnPrimaryClipChangedListener {
     private static final String TAG = ClipboardListenerService.class.getSimpleName();

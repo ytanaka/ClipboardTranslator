@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.testapp.clipboardtranslator" >
+    package="io.github.ytanaka.cliptrans" >
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:name="com.example.testapp.clipboardtranslator.MyApplication"
+        android:name="io.github.ytanaka.cliptrans.MyApplication"
         android:theme="@android:style/Theme.Holo.Light" >
         <activity
-            android:name="com.example.testapp.clipboardtranslator.activity.MainActivity"
+            android:name="io.github.ytanaka.cliptrans.activity.MainActivity"
             android:launchMode="singleTask"
             android:label="@string/app_name_short" >
             <intent-filter>
@@ -18,20 +18,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.testapp.clipboardtranslator.activity.SettingActivity"
+            android:name="io.github.ytanaka.cliptrans.activity.SettingActivity"
             android:label="@string/title_setting" >
         </activity>
         <activity
-            android:name="com.example.testapp.clipboardtranslator.activity.AboutActivity"
+            android:name="io.github.ytanaka.cliptrans.activity.AboutActivity"
             android:label="@string/title_about" >
         </activity>
         <activity
-            android:name="com.example.testapp.clipboardtranslator.activity.DicActivity"
+            android:name="io.github.ytanaka.cliptrans.activity.DicActivity"
             android:noHistory="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
 
-        <service android:name="com.example.testapp.clipboardtranslator.service.ClipboardListenerService" />
+        <service android:name="io.github.ytanaka.cliptrans.service.ClipboardListenerService" />
     </application>
 
 </manifest>

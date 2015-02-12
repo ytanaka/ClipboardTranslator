@@ -1,4 +1,4 @@
-package com.example.testapp.clipboardtranslator.db;
+package io.github.ytanaka.cliptrans.db;
 
 import android.content.ContentValues;
 import android.content.Context;

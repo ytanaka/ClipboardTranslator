@@ -1,4 +1,4 @@
-package com.example.testapp.clipboardtranslator.activity;
+package io.github.ytanaka.cliptrans.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,10 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.testapp.clipboardtranslator.MyApplication;
-import com.example.testapp.clipboardtranslator.R;
-import com.example.testapp.clipboardtranslator.db.DB;
-import com.example.testapp.clipboardtranslator.service.ClipboardListenerService;
+import io.github.ytanaka.cliptrans.MyApplication;
+import io.github.ytanaka.cliptrans.R;
+import io.github.ytanaka.cliptrans.db.DB;
+import io.github.ytanaka.cliptrans.service.ClipboardListenerService;
 
 import java.util.ArrayList;
 import java.util.List;

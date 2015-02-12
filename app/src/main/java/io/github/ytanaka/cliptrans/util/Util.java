@@ -1,12 +1,10 @@
-package com.example.testapp.clipboardtranslator.util;
+package io.github.ytanaka.cliptrans.util;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.util.Log;
-
-import com.example.testapp.clipboardtranslator.R;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -17,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+
+import io.github.ytanaka.cliptrans.R;
 
 public class Util {
     private static final String TAG = Util.class.getSimpleName();

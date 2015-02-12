@@ -1,4 +1,4 @@
-package com.example.testapp.clipboardtranslator.activity;
+package io.github.ytanaka.cliptrans.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.testapp.clipboardtranslator.R;
-import com.example.testapp.clipboardtranslator.service.ClipboardListenerService;
+import io.github.ytanaka.cliptrans.R;
+import io.github.ytanaka.cliptrans.service.ClipboardListenerService;
 
 
 public class MainActivity extends Activity {

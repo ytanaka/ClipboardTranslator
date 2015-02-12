@@ -1,10 +1,10 @@
-package com.example.testapp.clipboardtranslator;
+package io.github.ytanaka.cliptrans;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.example.testapp.clipboardtranslator.db.DB;
-import com.example.testapp.clipboardtranslator.service.ClipboardListenerService;
+import io.github.ytanaka.cliptrans.db.DB;
+import io.github.ytanaka.cliptrans.service.ClipboardListenerService;
 
 public class MyApplication extends Application {
     private DB db;
