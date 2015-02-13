@@ -1,10 +1,11 @@
-package io.github.ytanaka.cliptrans.db;
+package io.github.ytanaka.cliptrans.dic;
 
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
 import io.github.ytanaka.cliptrans.MyApplication;
+import io.github.ytanaka.cliptrans.db.DB;
 import io.github.ytanaka.cliptrans.util.Util;
 
 import org.kamranzafar.jtar.TarEntry;

@@ -17,8 +17,8 @@ import io.github.ytanaka.cliptrans.MyApplication;
 import io.github.ytanaka.cliptrans.MyPreference;
 import io.github.ytanaka.cliptrans.R;
 import io.github.ytanaka.cliptrans.db.DB;
-import io.github.ytanaka.cliptrans.db.DicFileGene95;
-import io.github.ytanaka.cliptrans.db.DicFileHand;
+import io.github.ytanaka.cliptrans.dic.DicFileGene95;
+import io.github.ytanaka.cliptrans.dic.DicFileHand;
 import io.github.ytanaka.cliptrans.util.ProgressAsyncTask;
 import io.github.ytanaka.cliptrans.util.Util;
 
