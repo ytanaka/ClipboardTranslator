@@ -80,10 +80,7 @@ public class DicActivity extends Activity {
 
         List<Item> items = new ArrayList<>();
         for (DB.Result i: MyApplication.instance(this).getDb().find(word, 200)) {
-            items.add(new Item(i.word, i.type, null));
-            for (String s: i.desc.split("\n")) {
-                items.add(new Item(null, -1, s));
-            }
+            items.add(new Item(i.word, i.type, i.desc));
         }
         MyAdapter adapter = new MyAdapter(this, items);
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -131,14 +128,11 @@ public class DicActivity extends Activity {
             Tag tag = (Tag) convertView.getTag();
             if (tag == null) {
                 tag = new Tag();
-                tag.layoutTitle = convertView.findViewById(R.id.layout_title);
                 tag.tvTitle = (TextView) convertView.findViewById(R.id.textView_title);
                 tag.tvType = (TextView) convertView.findViewById(R.id.textView_dic_type);
                 tag.tvContent = (TextView) convertView.findViewById(R.id.textView_content);
             }
             Item i = getItem(position);
-            tag.layoutTitle.setVisibility(i.title != null ? View.VISIBLE : View.GONE);
-            tag.tvContent.setVisibility(i.content != null ? View.VISIBLE : View.GONE);
             tag.tvTitle.setText(i.title);
             tag.tvType.setText(getDicTypeString(i.type));
             tag.tvType.setBackgroundResource(getDicTypeBg(i.type));
@@ -161,7 +155,6 @@ public class DicActivity extends Activity {
         }
 
         class Tag {
-            View layoutTitle;
             TextView tvTitle;
             TextView tvType;
             TextView tvContent;

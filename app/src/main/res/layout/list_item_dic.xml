@@ -22,7 +22,8 @@
             android:textColor="@android:color/black"
             tools:ignore="HardcodedText"
             android:ellipsize="end"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:textIsSelectable="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,6 +48,7 @@
         android:id="@+id/textView_content"
         android:layout_marginLeft="15dp"
         android:textColor="@android:color/black"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        tools:ignore="HardcodedText,RtlHardcoded"
+        android:textIsSelectable="true"/>
 
 </LinearLayout>
