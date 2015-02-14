@@ -3,8 +3,11 @@ package io.github.ytanaka.cliptrans.util;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
+import android.view.View;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -37,9 +40,12 @@ public class Util {
     }
 
     public static void copyContentResolverToFile(Context context, Uri uri, File file) throws IOException {
-        InputStream in = new BufferedInputStream(context.getContentResolver().openInputStream(uri));
+        copyInputStreamToFile(context.getContentResolver().openInputStream(uri), file);
+    }
+    public static void copyInputStreamToFile(InputStream in, File file) throws IOException {
+        InputStream in2 = new BufferedInputStream(in);
         FileOutputStream out = new FileOutputStream(file);
-        Util.copyAndClose(in, out);
+        Util.copyAndClose(in2, out);
     }
 
     public static void copyAndClose(InputStream in, OutputStream out) throws IOException {
@@ -91,5 +97,14 @@ public class Util {
 
     abstract public static class Notifier {
         abstract public void notify(String msg);
+    }
+
+    public static void setBackground(View v, Drawable d) {
+        if (Build.VERSION.SDK_INT < 16) {
+            //noinspection deprecation
+            v.setBackgroundDrawable(d);
+        } else {
+            v.setBackground(d);
+        }
     }
 }

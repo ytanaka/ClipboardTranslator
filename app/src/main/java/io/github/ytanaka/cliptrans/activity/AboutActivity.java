@@ -12,8 +12,6 @@ import io.github.ytanaka.cliptrans.R;
 import io.github.ytanaka.cliptrans.util.Util;
 
 public class AboutActivity extends Activity {
-    public static final String TAG = AboutActivity.class.getSimpleName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

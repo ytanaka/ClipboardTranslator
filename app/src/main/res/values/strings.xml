@@ -16,8 +16,6 @@
     <string name="top">Top</string>
     <string name="below">Below</string>
     <string name="dictionary_import">Dictionary import</string>
-    <string name="dictionary_description_hand">English-Japanese dictionary in the public domain (ejdic-hand)</string>
-    <string name="dictionary_description_gene95">GENE95 dictionary</string>
     <string name="__words_imported">%1$d words has been imported</string>
     <string name="download_dic">Download</string>
     <string name="import_dic">Import</string>
@@ -31,7 +29,5 @@
     <string name="notify_finished_import_dictionary">Import of dictionary is now complete. \nThe downloaded file can safely be deleted.</string>
     <string name="notification_message">Please copy the string to the clipboard, I will translate</string>
     <string name="not_found_google_translation">Google translation not found</string>
-    <string name="dic_type_hand">ejdic-hand</string>
-    <string name="dic_type_gene95">GENE95</string>
 
 </resources>

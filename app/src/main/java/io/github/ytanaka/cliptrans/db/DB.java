@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DB extends SQLiteOpenHelper {
-    static final int VERSION = 1;
+    static final int VERSION = 2;
     static final String FILENAME = "dic";
 
     static final String TABLE_NAME = "dic";
@@ -25,22 +25,19 @@ public class DB extends SQLiteOpenHelper {
             COL_DESC,
     };
     public static class Result {
-        public int type;
+        public String type;
         public String word;
         public String desc;
         Result(Cursor c) {
-            type = c.getInt(1);
+            type = c.getString(1);
             word = c.getString(2);
             desc = c.getString(3);
         }
     }
 
-    public static final int TYPE_HAND = 1;
-    public static final int TYPE_GENE95 = 2;
-
     static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" +
             COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COL_TYPE + " INTEER, " +
+            COL_TYPE + " TEXT, " +
             COL_WORD + " TEXT, " +
             COL_DESC + " TEXT)";
 
@@ -66,11 +63,11 @@ public class DB extends SQLiteOpenHelper {
         return db;
     }
 
-    public int remove(int type) {
-        return db.delete(TABLE_NAME, COL_TYPE + "=?", new String[] { "" + type });
+    public int remove(String type) {
+        return db.delete(TABLE_NAME, COL_TYPE + "=?", new String[] { type });
     }
 
-    public long insert(int type, String word, String desc) {
+    public long insert(String type, String word, String desc) {
         ContentValues val = new ContentValues();
         val.put(COL_TYPE, type);
         val.put(COL_WORD, word);
@@ -78,9 +75,9 @@ public class DB extends SQLiteOpenHelper {
         return db.insert(TABLE_NAME, null, val);
     }
 
-    public int count(int type) {
+    public int count(String type) {
         String sql = "SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE " + COL_TYPE + " = ?";
-        Cursor c = db.rawQuery(sql, new String[]{"" + type});
+        Cursor c = db.rawQuery(sql, new String[]{ type });
         try {
             c.moveToFirst();
             return c.getInt(0);

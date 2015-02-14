@@ -1,33 +1,69 @@
 package io.github.ytanaka.cliptrans.dic;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
-
-import io.github.ytanaka.cliptrans.MyApplication;
-import io.github.ytanaka.cliptrans.db.DB;
-import io.github.ytanaka.cliptrans.util.Util;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-public class DicFileHand {
+import io.github.ytanaka.cliptrans.db.DB;
+import io.github.ytanaka.cliptrans.util.Util;
+
+public class DicFileHand implements Dic {
     private static final String TAG = DicFileHand.class.getSimpleName();
+
+    static Drawable iconBackground;
+    static {
+        float[] outer = { 100,100,100,100,100,100,100,100,};
+        RoundRectShape s = new RoundRectShape(outer, null, null);
+        ShapeDrawable d = new ShapeDrawable(s);
+        d.getPaint().setColor(0xff12ff00);
+        iconBackground = d;
+    }
+
+    @Override
+    public String getId() {
+        return TAG;
+    }
+
+    @Override
+    public Info getInfo() {
+        Info i = new Info();
+        i.downloadUrl = "http://kujirahand.com/web-tools/EJDictFreeDL.php";
+        i.downloadClickTarget = "辞書データ(テキスト形式)";
+        i.downloadFilename = "ejdic-hand-txt.zip";
+        i.downloadFiletype = "application/zip";
+        i.description = "English-Japanese dictionary in the public domain (ejdic-hand)";
+        i.iconText = "ejdic-hand";
+        i.iconBackground = iconBackground;
+
+        if (TextUtils.equals(Locale.JAPAN.getCountry(), Locale.getDefault().getCountry())) {
+            i.description = "パブリックドメインの英和辞書データ (ejdic-hand)";
+        }
+        return i;
+    }
 
     private static final String ZIP_ENTRY_NAME = "ejdic-hand-txt/ejdic-hand-utf8.txt";
 
-    public static int extractAndInsertToDb(Context context, Uri uri, Util.Notifier notifier) {
+    @Override
+    public int extractAndInsertToDb(Context context, Uri uri, DB db, Util.Notifier progressNotifier) {
         File file = new File(context.getCacheDir(), "dic.zip");
         try {
             Util.copyContentResolverToFile(context, uri, file);
             ZipFile zip = new ZipFile(file);
             ZipEntry ze = zip.getEntry(ZIP_ENTRY_NAME);
-            BufferedReader in = new BufferedReader(new InputStreamReader(zip.getInputStream(ze)));
-            return insertToDb(context, in, notifier);
+            BufferedReader fin = new BufferedReader(new InputStreamReader(zip.getInputStream(ze)));
+            return insertToDb(db, fin, progressNotifier);
         } catch (Exception e) {
             Log.e(TAG, e.toString(), e);
         } finally {
@@ -38,8 +74,7 @@ public class DicFileHand {
         return 0;
     }
 
-    private static int insertToDb(Context context, BufferedReader in, Util.Notifier notifier) throws IOException {
-        DB db = MyApplication.instance(context).getDb();
+    private int insertToDb(DB db, BufferedReader in, Util.Notifier notifier) throws IOException {
         db.getDb().beginTransaction();
         int count = 0;
         try {
@@ -48,7 +83,7 @@ public class DicFileHand {
                 if (line == null) break;
                 String[] spl = line.split("\t", 2);
                 if (spl.length != 2) continue;
-                db.insert(DB.TYPE_HAND, spl[0], formatDesc(spl[1]));
+                db.insert(getId(), spl[0], formatDesc(spl[1]));
                 count++;
                 if (count % 100 == 0) notifier.notify("" + count);
             }

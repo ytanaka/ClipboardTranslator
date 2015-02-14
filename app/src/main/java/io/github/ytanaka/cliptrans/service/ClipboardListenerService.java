@@ -144,6 +144,7 @@ public class ClipboardListenerService extends Service implements ClipboardManage
                 .setContentIntent(pIntent)
                 .setAutoCancel(false);
         if (Build.VERSION.SDK_INT < 16) {
+            //noinspection deprecation
             startForeground(1, builder.getNotification());
         } else {
             startForeground(1, builder.build());

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +13,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import io.github.ytanaka.cliptrans.MyApplication;
-import io.github.ytanaka.cliptrans.R;
-import io.github.ytanaka.cliptrans.db.DB;
-import io.github.ytanaka.cliptrans.service.ClipboardListenerService;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.ytanaka.cliptrans.MyApplication;
+import io.github.ytanaka.cliptrans.R;
+import io.github.ytanaka.cliptrans.db.DB;
+import io.github.ytanaka.cliptrans.dic.Dic;
+import io.github.ytanaka.cliptrans.service.ClipboardListenerService;
+import io.github.ytanaka.cliptrans.util.Util;
+
 public class DicActivity extends Activity {
-    private static final String TAG = DicActivity.class.getSimpleName();
     private static String sWord = null;
 
     public static void startActivity(Context context, String word) {
@@ -80,7 +82,7 @@ public class DicActivity extends Activity {
 
         List<Item> items = new ArrayList<>();
         for (DB.Result i: MyApplication.instance(this).getDb().find(word, 200)) {
-            items.add(new Item(i.word, i.type, i.desc));
+            items.add(new Item(i.type, i.word, i.desc));
         }
         MyAdapter adapter = new MyAdapter(this, items);
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -106,12 +108,12 @@ public class DicActivity extends Activity {
     }
 
     static class Item {
+        String type;
         String title;
-        int type;
         String content;
-        Item(String title, int type, String content) {
-            this.title = title;
+        Item(String type, String title, String content) {
             this.type = type;
+            this.title = title;
             this.content = content;
         }
     }
@@ -123,7 +125,7 @@ public class DicActivity extends Activity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                convertView = getLayoutInflater().inflate(R.layout.list_item_dic, null);
+                convertView = getLayoutInflater().inflate(R.layout.list_item_dic, parent, false);
             }
             Tag tag = (Tag) convertView.getTag();
             if (tag == null) {
@@ -133,25 +135,12 @@ public class DicActivity extends Activity {
                 tag.tvContent = (TextView) convertView.findViewById(R.id.textView_content);
             }
             Item i = getItem(position);
+            Dic.Info dic = getDic(i.type).getInfo();
             tag.tvTitle.setText(i.title);
-            tag.tvType.setText(getDicTypeString(i.type));
-            tag.tvType.setBackgroundResource(getDicTypeBg(i.type));
+            tag.tvType.setText(dic.iconText);
+            Util.setBackground(tag.tvType, dic.iconBackground);
             tag.tvContent.setText(i.content);
             return convertView;
-        }
-        private String getDicTypeString(int type) {
-            switch (type) {
-                case DB.TYPE_HAND: return getResources().getString(R.string.dic_type_hand);
-                case DB.TYPE_GENE95: return getResources().getString(R.string.dic_type_gene95);
-                default: return "???";
-            }
-        }
-        private int getDicTypeBg(int type) {
-            switch (type) {
-                case DB.TYPE_HAND: return R.drawable.dic_icon_hand;
-                case DB.TYPE_GENE95: return R.drawable.dic_icon_gene95;
-                default: return 0;
-            }
         }
 
         class Tag {
@@ -159,5 +148,12 @@ public class DicActivity extends Activity {
             TextView tvType;
             TextView tvContent;
         }
+    }
+
+    private Dic getDic(String type) {
+        for (Dic dic : Dic.LIST) {
+            if (TextUtils.equals(dic.getId(), type)) return dic;
+        }
+        throw new RuntimeException(type);
     }
 }
