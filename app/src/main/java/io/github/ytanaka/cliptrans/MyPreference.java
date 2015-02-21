@@ -22,7 +22,7 @@ public class MyPreference {
 
     private static final String KEY_IS_SEARCH_FUZZY = "isSearchFuzzy";
     public boolean isSearchFuzzy() {
-        return pref.getBoolean(KEY_IS_SEARCH_FUZZY, false);
+        return pref.getBoolean(KEY_IS_SEARCH_FUZZY, true);
     }
     public void setSearchFuzzy(boolean b) {
         pref.edit().putBoolean(KEY_IS_SEARCH_FUZZY, b).apply();
@@ -30,7 +30,7 @@ public class MyPreference {
 
     private static final String KEY_IS_DISPLAY_THUMBNAIL = "isDisplayThumbnail";
     public boolean isDisplayThumbnail() {
-        return pref.getBoolean(KEY_IS_DISPLAY_THUMBNAIL, true);
+        return pref.getBoolean(KEY_IS_DISPLAY_THUMBNAIL, false);
     }
     public void setDisplayThumbnail(boolean b) {
         pref.edit().putBoolean(KEY_IS_DISPLAY_THUMBNAIL, b).apply();

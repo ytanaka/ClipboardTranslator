@@ -8,8 +8,8 @@ android {
         applicationId "io.github.ytanaka.cliptrans"
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
     }
     buildTypes {
         release {
@@ -38,7 +38,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'org.kamranzafar:jtar:2.2'
-
-//    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:support-annotations:20.0.0'
 }
 

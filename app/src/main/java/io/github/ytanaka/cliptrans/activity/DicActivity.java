@@ -21,6 +21,7 @@ import io.github.ytanaka.cliptrans.MyPreference;
 import io.github.ytanaka.cliptrans.R;
 import io.github.ytanaka.cliptrans.db.DB;
 import io.github.ytanaka.cliptrans.dic.Dic;
+import io.github.ytanaka.cliptrans.dic.FuzzyWordEnglish;
 import io.github.ytanaka.cliptrans.service.ClipboardListenerService;
 import io.github.ytanaka.cliptrans.util.Util;
 
@@ -72,9 +73,27 @@ public class DicActivity extends Activity {
         layoutTop.setVisibility(pref.isDisplayDicBottom() ? View.VISIBLE : View.GONE);
         layoutBottom.setVisibility(!pref.isDisplayDicBottom() ? View.VISIBLE : View.GONE);
 
+        // 訳表示
+        DB db = MyApplication.instance(this).getDb();
+        String word2 = "";
+        List<Item> items = new ArrayList<>();
+        List<DB.Result> resultList = db.find(word, 200);
+        if (resultList.size() == 0) {
+            word2 = matchInDic(this, word);
+            resultList = db.find(word2, 200);
+            word2 = " (" + word2 + ")";
+        }
+        for (DB.Result i: resultList) {
+            items.add(new Item(i.type, i.word, i.desc));
+        }
+        MyAdapter adapter = new MyAdapter(this, items);
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
+        listView.setDividerHeight(0);
+
         // タイトル部
         TextView tvTitle = (TextView) findViewById(R.id.textView_title);
-        tvTitle.setText(word);
+        tvTitle.setText(word + word2);
         findViewById(R.id.button_translate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,16 +101,18 @@ public class DicActivity extends Activity {
                 closeActivity();
             }
         });
+    }
 
-        // 訳表示
-        List<Item> items = new ArrayList<>();
-        for (DB.Result i: MyApplication.instance(this).getDb().find(word, 200)) {
-            items.add(new Item(i.type, i.word, i.desc));
+    public static String matchInDic(Context context, String word) {
+        DB db = MyApplication.instance(context).getDb();
+        DB.Result r = db.find1(word);
+        if (r != null) return word;
+        if (!MyApplication.instance(context).getPref().isSearchFuzzy()) return null;
+        for (String s : new FuzzyWordEnglish().normalize(word)) {
+            r = db.find1(s);
+            if (r != null) return s;
         }
-        MyAdapter adapter = new MyAdapter(this, items);
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(adapter);
-        listView.setDividerHeight(0);
+        return null;
     }
 
     @Override

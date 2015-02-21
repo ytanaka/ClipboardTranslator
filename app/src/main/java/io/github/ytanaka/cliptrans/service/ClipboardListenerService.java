@@ -22,6 +22,7 @@ import io.github.ytanaka.cliptrans.R;
 import io.github.ytanaka.cliptrans.activity.DicActivity;
 import io.github.ytanaka.cliptrans.activity.MainActivity;
 import io.github.ytanaka.cliptrans.MyApplication;
+import io.github.ytanaka.cliptrans.db.DB;
 
 public class ClipboardListenerService extends Service implements ClipboardManager.OnPrimaryClipChangedListener {
     private static final String TAG = ClipboardListenerService.class.getSimpleName();
@@ -82,15 +83,12 @@ public class ClipboardListenerService extends Service implements ClipboardManage
         if (lastCall + 1000 > now) return;
         lastCall = now;
 
-        if (MyApplication.instance(this).getDb().find(s, 1).size() > 0) {
-            startDic(s);
+        DB db = MyApplication.instance(this).getDb();
+        if (db.find(s, 1).size() > 0 || DicActivity.matchInDic(this, s) != null) {
+            DicActivity.startActivity(this, s);
         } else {
             startTranslator(this, s);
         }
-    }
-
-    private void startDic(String s) {
-        DicActivity.startActivity(this, s);
     }
 
     private ClipboardManager getClipboardManager() {
