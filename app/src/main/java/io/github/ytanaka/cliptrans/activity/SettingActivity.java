@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -41,6 +43,7 @@ public class SettingActivity extends Activity {
         mDb = MyApplication.instance(this).getDb();
         mPref = MyApplication.instance(this).getPref();
 
+        // 表示位置
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup_display);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -50,6 +53,27 @@ public class SettingActivity extends Activity {
         });
         radioGroup.check(mPref.isDisplayDicBottom() ? R.id.radioButton_display_bottom : R.id.radioButton_display_top);
 
+        // あいまい検索
+        final CheckBox checkBoxFuzzySearch = (CheckBox) findViewById(R.id.checkBox_search_fuzzy);
+        checkBoxFuzzySearch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mPref.setSearchFuzzy(checkBoxFuzzySearch.isChecked());
+            }
+        });
+        checkBoxFuzzySearch.setChecked(mPref.isSearchFuzzy());
+
+        // サムネイル表示
+        final CheckBox checkBoxShowThumbnail = (CheckBox) findViewById(R.id.checkBox_display_thumbnail);
+        checkBoxShowThumbnail.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mPref.setDisplayThumbnail(checkBoxShowThumbnail.isChecked());
+            }
+        });
+        checkBoxShowThumbnail.setChecked(mPref.isDisplayThumbnail());
+
+        // 辞書取り込み
         LinearLayout dicList = (LinearLayout) findViewById(R.id.layout_dic_list);
         for (int i = 0; i < Dic.LIST.length; i++) {
             LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

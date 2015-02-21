@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.ytanaka.cliptrans.MyApplication;
+import io.github.ytanaka.cliptrans.MyPreference;
 import io.github.ytanaka.cliptrans.R;
 import io.github.ytanaka.cliptrans.db.DB;
 import io.github.ytanaka.cliptrans.dic.Dic;
@@ -37,7 +38,8 @@ public class DicActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        MyPreference pref = MyApplication.instance(this).getPref();
+        if (!pref.isDisplayThumbnail()) getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.activity_dic);
 
         // タスクのヒストリーから画面が復活しないようにする
@@ -49,8 +51,8 @@ public class DicActivity extends Activity {
 
         final String word = sWord;
         sWord = null;
-        boolean isBottom = MyApplication.instance(this).getPref().isDisplayDicBottom();
 
+        // 余白設定
         View layoutTop = findViewById(R.id.layout_blank_top);
         View layoutBottom = findViewById(R.id.layout_blank_bottom);
         layoutTop.setOnTouchListener(new View.OnTouchListener() {
@@ -67,9 +69,10 @@ public class DicActivity extends Activity {
                 return false;
             }
         });
-        layoutTop.setVisibility(isBottom ? View.VISIBLE : View.GONE);
-        layoutBottom.setVisibility(!isBottom ? View.VISIBLE : View.GONE);
+        layoutTop.setVisibility(pref.isDisplayDicBottom() ? View.VISIBLE : View.GONE);
+        layoutBottom.setVisibility(!pref.isDisplayDicBottom() ? View.VISIBLE : View.GONE);
 
+        // タイトル部
         TextView tvTitle = (TextView) findViewById(R.id.textView_title);
         tvTitle.setText(word);
         findViewById(R.id.button_translate).setOnClickListener(new View.OnClickListener() {
@@ -80,6 +83,7 @@ public class DicActivity extends Activity {
             }
         });
 
+        // 訳表示
         List<Item> items = new ArrayList<>();
         for (DB.Result i: MyApplication.instance(this).getDb().find(word, 200)) {
             items.add(new Item(i.type, i.word, i.desc));

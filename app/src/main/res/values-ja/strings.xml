@@ -11,10 +11,20 @@
     <string name="off">OFF</string>
     <string name="install_google_translate">Google翻訳をインストール</string>
     <string name="translate">翻訳</string>
+
     <string name="display_position">表示位置</string>
     <string name="display_position_description">アプリのローカル辞書で単語が見つかった時は、元画面にかぶせて訳を表示します\n(見つからなかったら、Google翻訳を起動します)</string>
     <string name="top">上</string>
     <string name="below">下</string>
+
+    <string name="dictionary_fuzzy_search">辞書のあいまい検索</string>
+    <string name="dictionary_fuzzy_search_description">英語の単数形、複数形で辞書を検索します。</string>
+    <string name="search_fuzzy">あいまい検索する</string>
+
+    <string name="display_allow_recent_thumbnail">Android履歴画面にサムネイルを表示する</string>
+    <string name="display_allow_recent_thumbnail_description">このアプリの辞書画面サムネイル画像が、別のアプリの画像になって混乱するのを防ぎます。\n（辞書画面でスクリーンショットを撮れなくなります）\n（端末ごとに動作が違うかもしれません）</string>
+    <string name="display_thumbnail">サムネイルを表示する</string>
+
     <string name="dictionary_import">辞書のインストール</string>
     <string name="__words_imported">%1$d 件の単語が登録済みです</string>
     <string name="download_dic">ダウンロード</string>
@@ -27,6 +37,7 @@
     <string name="importing_dictionary">辞書データ登録中</string>
     <string name="failed_to_import_dictionary">辞書登録失敗</string>
     <string name="notify_finished_import_dictionary">辞書登録が完了しました。\nダウンロードしたファイルは削除して構いません。</string>
+
     <string name="notification_message">クリップボードにコピーした文字列を翻訳します</string>
     <string name="not_found_google_translation">Google翻訳が見つかりませんでした</string>
 

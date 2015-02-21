@@ -11,10 +11,20 @@
     <string name="off">OFF</string>
     <string name="install_google_translate">Install Google Translate</string>
     <string name="translate">Translate</string>
+
     <string name="display_position">Display position</string>
     <string name="display_position_description">When word is found in the local dictionary, app displays the translation over the original screen.\n(if not found, start the Google translated)</string>
     <string name="top">Top</string>
     <string name="below">Below</string>
+
+    <string name="dictionary_fuzzy_search">Dictionary fuzzy search</string>
+    <string name="dictionary_fuzzy_search_description">Search singular and plural in English.</string>
+    <string name="search_fuzzy">Search fuzzy</string>
+
+    <string name="display_allow_recent_thumbnail">Display a thumbnail in the Android Recent screen</string>
+    <string name="display_allow_recent_thumbnail_description">To prevent replace the thumbnail of dictionary screen of this app and another app.\n(You can not take a screenshot in the dictionary screen)\n(Behavior might be different for each terminal)</string>
+    <string name="display_thumbnail">Display a thumbnail</string>
+
     <string name="dictionary_import">Dictionary import</string>
     <string name="__words_imported">%1$d words has been imported</string>
     <string name="download_dic">Download</string>
@@ -27,6 +37,7 @@
     <string name="importing_dictionary">Importing dictionary</string>
     <string name="failed_to_import_dictionary">Failed to import the dictionary</string>
     <string name="notify_finished_import_dictionary">Import of dictionary is now complete. \nThe downloaded file can safely be deleted.</string>
+
     <string name="notification_message">Please copy the string to the clipboard, I will translate</string>
     <string name="not_found_google_translation">Google translation not found</string>
 
