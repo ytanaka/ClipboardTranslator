@@ -18,5 +18,5 @@ keystore setting
 build
 -----
 
-    $ ./gradlew assembleReleas
+    $ ./gradlew assembleRelease
 

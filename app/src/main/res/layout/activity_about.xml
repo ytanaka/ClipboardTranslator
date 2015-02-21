@@ -16,5 +16,6 @@
         android:layout_height="match_parent"
         android:text="New Text"
         android:id="@+id/textView"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        tools:ignore="HardcodedText" />
 </LinearLayout>

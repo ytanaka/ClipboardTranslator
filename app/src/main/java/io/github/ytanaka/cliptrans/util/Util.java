@@ -1,5 +1,6 @@
 package io.github.ytanaka.cliptrans.util;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -99,6 +100,7 @@ public class Util {
         abstract public void notify(String msg);
     }
 
+    @TargetApi(16)
     public static void setBackground(View v, Drawable d) {
         if (Build.VERSION.SDK_INT < 16) {
             //noinspection deprecation

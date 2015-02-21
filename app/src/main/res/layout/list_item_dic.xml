@@ -20,7 +20,7 @@
             android:textSize="18sp"
             android:layout_marginLeft="5dp"
             android:textColor="@android:color/black"
-            tools:ignore="HardcodedText"
+            tools:ignore="HardcodedText,RtlHardcoded"
             android:ellipsize="end"
             android:maxLines="1"
             android:textIsSelectable="true"/>

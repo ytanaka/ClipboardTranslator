@@ -1,5 +1,6 @@
 package io.github.ytanaka.cliptrans.service;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -127,6 +128,7 @@ public class ClipboardListenerService extends Service implements ClipboardManage
         Toast.makeText(context, R.string.not_found_google_translation, Toast.LENGTH_LONG).show();
     }
 
+    @TargetApi(16)
     private void showNotification() {
         Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);

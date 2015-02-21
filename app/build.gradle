@@ -33,6 +33,15 @@ android {
                 signingConfig signingConfigs.release
             }
     }
+
+    productFlavors {
+        beta {
+            applicationId "io.github.ytanaka.cliptrans.test"
+        }
+        live {
+            applicationId "io.github.ytanaka.cliptrans"
+        }
+    }
 }
 
 dependencies {
