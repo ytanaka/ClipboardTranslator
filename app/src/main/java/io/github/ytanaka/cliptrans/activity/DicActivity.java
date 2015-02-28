@@ -16,6 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.ytanaka.cliptrans.Logic;
 import io.github.ytanaka.cliptrans.MyApplication;
 import io.github.ytanaka.cliptrans.MyPreference;
 import io.github.ytanaka.cliptrans.R;
@@ -79,7 +80,7 @@ public class DicActivity extends Activity {
         List<Item> items = new ArrayList<>();
         List<DB.Result> resultList = db.find(word, 200);
         if (resultList.size() == 0) {
-            word2 = matchInDic(this, word);
+            word2 = Logic.fuzzyMatchInDic(this, word);
             resultList = db.find(word2, 200);
             word2 = " (" + word2 + ")";
         }
@@ -101,18 +102,6 @@ public class DicActivity extends Activity {
                 closeActivity();
             }
         });
-    }
-
-    public static String matchInDic(Context context, String word) {
-        DB db = MyApplication.instance(context).getDb();
-        DB.Result r = db.find1(word);
-        if (r != null) return word;
-        if (!MyApplication.instance(context).getPref().isSearchFuzzy()) return null;
-        for (String s : new FuzzyWordEnglish().normalize(word)) {
-            r = db.find1(s);
-            if (r != null) return s;
-        }
-        return null;
     }
 
     @Override

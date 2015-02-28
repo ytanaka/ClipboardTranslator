@@ -22,10 +22,11 @@
     <string name="dictionary_fuzzy_search_description">Search singular and plural in English.</string>
     <string name="search_fuzzy">Search fuzzy</string>
 
-    <string name="dictionary_filter_word">Filtering not search in the dictionary</string>
+    <string name="dictionary_filter_word">Filter to not invoke Google Translate</string>
+    <string name="dictionary_filter_word_description">\"word\" is a sequence of characters that do not contain such as a space.\n\"string\" is a sequence of one or more multiple words separated by such as a space.</string>
     <string name="dictionary_filter_word_nihongo">String that contains Hiragana, Katakana, Kanji</string>
     <string name="dictionary_filter_word_num_sp">Word that contains the number, symbol</string>
-    <string name="dictionary_filter_word_alpha_low2up">Words that change from alphabet lower case to upper case at intermediate. (Probably password)</string>
+    <string name="dictionary_filter_word_alpha_low2up">Word that change from alphabet lower case to upper case at intermediate</string>
 
     <string name="display_allow_recent_thumbnail">Display a thumbnail in the Android Recent screen</string>
     <string name="display_allow_recent_thumbnail_description">To prevent replace the thumbnail of dictionary screen of this app and another app.\n(You can not take a screenshot in the dictionary screen)\n(Behavior might be different for each terminal)</string>

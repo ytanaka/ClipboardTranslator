@@ -105,6 +105,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/dictionary_filter_word_alpha_low2up"
                     android:id="@+id/checkBox_filter_alpha_low2up" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dictionary_filter_word_description" />
+
 
             </LinearLayout>
 

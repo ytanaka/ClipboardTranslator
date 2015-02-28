@@ -19,6 +19,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import io.github.ytanaka.cliptrans.Logic;
 import io.github.ytanaka.cliptrans.R;
 import io.github.ytanaka.cliptrans.activity.DicActivity;
 import io.github.ytanaka.cliptrans.activity.MainActivity;
@@ -85,9 +86,9 @@ public class ClipboardListenerService extends Service implements ClipboardManage
         lastCall = now;
 
         DB db = MyApplication.instance(this).getDb();
-        if (db.find(s, 1).size() > 0 || DicActivity.matchInDic(this, s) != null) {
+        if (db.find(s, 1).size() > 0 || Logic.fuzzyMatchInDic(this, s) != null) {
             DicActivity.startActivity(this, s);
-        } else {
+        } else if (!Logic.isFilteredWord(this, s)) {
             startTranslator(this, s);
         }
     }
