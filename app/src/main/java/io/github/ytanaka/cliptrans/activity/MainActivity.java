@@ -61,6 +61,11 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void onButtonClicked_setting_dic(View view) {
+        Intent intent = new Intent(this, SettingDicActivity.class);
+        startActivity(intent);
+    }
+
     public void onButtonClicked_about(View v) {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);

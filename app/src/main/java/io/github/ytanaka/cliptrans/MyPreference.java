@@ -35,4 +35,30 @@ public class MyPreference {
     public void setDisplayThumbnail(boolean b) {
         pref.edit().putBoolean(KEY_IS_DISPLAY_THUMBNAIL, b).apply();
     }
+
+    private static final String KEY_FILTER_WORD_NIHONGO = "isFilterWordNihongo";
+    public boolean isFilterWordNihongo() {
+        return pref.getBoolean(KEY_FILTER_WORD_NIHONGO, true);
+    }
+    public void setFilterWordNihongo(boolean b) {
+        pref.edit().putBoolean(KEY_FILTER_WORD_NIHONGO, b).apply();
+    }
+
+    private static final String KEY_FILTER_WORD_NUM_SP = "isFilterWordNumSp";
+    public boolean isFilterWordNumSp() {
+        return pref.getBoolean(KEY_FILTER_WORD_NUM_SP, true);
+    }
+    public void setFilterWordNumSp(boolean b) {
+        pref.edit().putBoolean(KEY_FILTER_WORD_NUM_SP, b).apply();
+    }
+
+    private static final String KEY_FILTER_WORD_ALPHA_LOW2UP = "isFilterWordAlphaLow2up";
+    public boolean isFilterWordAlphaLow2up() {
+        return pref.getBoolean(KEY_FILTER_WORD_ALPHA_LOW2UP, true);
+    }
+    public void setFilterWordAlphaLow2up(boolean b) {
+        pref.edit().putBoolean(KEY_FILTER_WORD_ALPHA_LOW2UP, b).apply();
+    }
+
+
 }

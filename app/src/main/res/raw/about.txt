@@ -1,5 +1,5 @@
 <pre><code>
-<h3>Clipboard Translate</h3>
+<h3>Clipboard Translate (Ver.___VERSION___)</h3>
 Homepage<br>
 <a href='http://ytanaka.github.io/cliptrans'>http://ytanaka.github.io/cliptrans</a><br>
 <br>

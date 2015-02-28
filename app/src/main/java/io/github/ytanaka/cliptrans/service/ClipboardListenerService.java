@@ -123,6 +123,7 @@ public class ClipboardListenerService extends Service implements ClipboardManage
             intent.setComponent(new ComponentName(res.activityInfo.applicationInfo.packageName, res.activityInfo.name));
             Log.v(TAG, "start google translate activity");
             context.startActivity(intent);
+            Toast.makeText(context, R.string.started_google_translation, Toast.LENGTH_LONG).show();
             return;
         }
         Toast.makeText(context, R.string.not_found_google_translation, Toast.LENGTH_LONG).show();

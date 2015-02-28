@@ -67,6 +67,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/title_setting_dic"
+        android:id="@+id/button_setting_dic"
+        android:layout_margin="10dp"
+        android:onClick="onButtonClicked_setting_dic"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/title_about"
         android:id="@+id/button_about"
         android:layout_margin="10dp"

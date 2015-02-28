@@ -20,7 +20,9 @@ public class AboutActivity extends Activity {
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
 
         TextView tv = (TextView) findViewById(R.id.textView);
-        tv.setText(Html.fromHtml(Util.readString(getResources().openRawResource(R.raw.about))));
+        String str = Util.readString(getResources().openRawResource(R.raw.about));
+        str = str.replace("___VERSION___", getVersion());
+        tv.setText(Html.fromHtml(str));
         tv.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
@@ -33,4 +35,13 @@ public class AboutActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private String getVersion() {
+        try {
+            return getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (Exception e) {
+            return "???";
+        }
+    }
+
 }

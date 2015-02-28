@@ -4,7 +4,8 @@
     <string name="app_name">クリップボード翻訳</string>
     <string name="app_name_short">クリップ翻訳</string>
 
-    <string name="title_setting">設定</string>
+    <string name="title_setting">アプリ設定</string>
+    <string name="title_setting_dic">辞書設定</string>
     <string name="title_about">このアプリケーションについて</string>
 
     <string name="on">ON</string>
@@ -20,6 +21,11 @@
     <string name="dictionary_fuzzy_search">辞書のあいまい検索</string>
     <string name="dictionary_fuzzy_search_description">英語の単数形、複数形で辞書を検索します。</string>
     <string name="search_fuzzy">あいまい検索する</string>
+
+    <string name="dictionary_filter_word">辞書で検索しない条件</string>
+    <string name="dictionary_filter_word_nihongo">ひらがな、カタカナ、漢字が含まれている文字列</string>
+    <string name="dictionary_filter_word_num_sp">数字／記号が含まれる単語</string>
+    <string name="dictionary_filter_word_alpha_low2up">途中でアルファベット小文字から大文字に変わる単語 (たぶんパスワード)</string>
 
     <string name="display_allow_recent_thumbnail">Android履歴画面にサムネイルを表示する</string>
     <string name="display_allow_recent_thumbnail_description">このアプリの辞書画面サムネイル画像が、別のアプリの画像になって混乱するのを防ぎます。\n（辞書画面でスクリーンショットを撮れなくなります）\n（端末ごとに動作が違うかもしれません）</string>
@@ -40,5 +46,6 @@
 
     <string name="notification_message">クリップボードにコピーした文字列を翻訳します</string>
     <string name="not_found_google_translation">Google翻訳が見つかりませんでした</string>
+    <string name="started_google_translation">クリップボードにコピーされた文字列でGoogle翻訳を起動します</string>
 
 </resources>

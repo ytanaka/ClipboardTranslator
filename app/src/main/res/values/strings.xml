@@ -4,7 +4,8 @@
     <string name="app_name">Clipboard Translate</string>
     <string name="app_name_short">ClipTrans</string>
 
-    <string name="title_setting">Setting</string>
+    <string name="title_setting">App Setting</string>
+    <string name="title_setting_dic">Dictionary Setting</string>
     <string name="title_about">About</string>
 
     <string name="on">ON</string>
@@ -20,6 +21,11 @@
     <string name="dictionary_fuzzy_search">Dictionary fuzzy search</string>
     <string name="dictionary_fuzzy_search_description">Search singular and plural in English.</string>
     <string name="search_fuzzy">Search fuzzy</string>
+
+    <string name="dictionary_filter_word">Filtering not search in the dictionary</string>
+    <string name="dictionary_filter_word_nihongo">String that contains Hiragana, Katakana, Kanji</string>
+    <string name="dictionary_filter_word_num_sp">Word that contains the number, symbol</string>
+    <string name="dictionary_filter_word_alpha_low2up">Words that change from alphabet lower case to upper case at intermediate. (Probably password)</string>
 
     <string name="display_allow_recent_thumbnail">Display a thumbnail in the Android Recent screen</string>
     <string name="display_allow_recent_thumbnail_description">To prevent replace the thumbnail of dictionary screen of this app and another app.\n(You can not take a screenshot in the dictionary screen)\n(Behavior might be different for each terminal)</string>
@@ -40,5 +46,6 @@
 
     <string name="notification_message">Please copy the string to the clipboard, I will translate</string>
     <string name="not_found_google_translation">Google translation not found</string>
+    <string name="started_google_translation">Started the Google translation by copied string to the clipboard</string>
 
 </resources>

@@ -22,6 +22,10 @@
             android:label="@string/title_setting" >
         </activity>
         <activity
+            android:name="io.github.ytanaka.cliptrans.activity.SettingDicActivity"
+            android:label="@string/title_setting_dic" >
+        </activity>
+        <activity
             android:name="io.github.ytanaka.cliptrans.activity.AboutActivity"
             android:label="@string/title_about" >
         </activity>
