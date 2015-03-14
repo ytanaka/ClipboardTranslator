@@ -48,6 +48,7 @@
         android:layout_marginLeft="15dp"
         android:textColor="@android:color/black"
         tools:ignore="HardcodedText,RtlHardcoded"
-        android:textIsSelectable="true"/>
+        android:textIsSelectable="true"
+        android:layout_marginRight="5dp" />
 
 </LinearLayout>

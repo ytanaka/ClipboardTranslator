@@ -2,6 +2,8 @@
 <h3>クリップボード翻訳 (Ver.___VERSION___)</h3>
 ホームページ<br>
 <a href='http://ytanaka.github.io/cliptrans'>http://ytanaka.github.io/cliptrans</a><br>
+GooglePlay<br>
+<a href='https://play.google.com/store/apps/details?id=io.github.ytanaka.cliptrans'>https://play.google.com/store/apps/details?id=io.github.ytanaka.cliptrans</a><br>
 <br>
 <br>
 

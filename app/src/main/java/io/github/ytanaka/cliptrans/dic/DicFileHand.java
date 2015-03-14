@@ -75,6 +75,7 @@ public class DicFileHand implements Dic {
     }
 
     private int insertToDb(DB db, BufferedReader in, Util.Notifier notifier) throws IOException {
+        Log.d(TAG, "insertToDb(): start");
         db.getDb().beginTransaction();
         int count = 0;
         try {
@@ -91,6 +92,7 @@ public class DicFileHand implements Dic {
         } finally {
             db.getDb().endTransaction();
         }
+        Log.d(TAG, "insertToDb(): finish " + count);
         return count;
     }
 

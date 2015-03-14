@@ -15,3 +15,14 @@ http://kujirahand.com/web-tools/EJDictFreeDL.php
 
 ・GENE95 辞書
 http://www.namazu.org/~tsuchiya/sdic/data/gene.html
+
+使い方のコツ
+
+・内蔵辞書は2つあわせて3MBくらいでダウンロードできます。
+　インストールしておけば画面の切り替えが減って使いやすくなります。
+
+・内蔵辞書をダウンロード／インストールするには、Androidのブラウザーとダウンロードしたファイルの選択方法を知っている必要があります。
+　ファイル選択方法で困ったら、GooglePlayからファイラーをインストールしてください。（https://play.google.com/store/search?q=filer&c=apps）
+
+・Google翻訳は、オフライン言語をインストールしておくとネットワークがつながっていなくても翻訳ができます。
+　（つながっている時のほうが正確な翻訳を表示します）

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -48,11 +49,17 @@ public class DB extends SQLiteOpenHelper {
     static final String CREATE_INDEX = "CREATE INDEX " + INDEX_NAME + " ON " + TABLE_NAME + "(" + COL_WORD + " COLLATE NOCASE)";
 
     SQLiteDatabase db;
+    SQLiteStatement insertStatement;
 
     public DB(Context context) {
         super(context, FILENAME, null, VERSION);
         Log.d(TAG, "constructor");
         db = getWritableDatabase();
+        insertStatement = db.compileStatement(
+                "insert into " + TABLE_NAME + "(" +
+                COL_TYPE + "," +
+                COL_WORD + "," +
+                COL_DESC + ") values (?,?,?)");
     }
 
     @Override
@@ -85,12 +92,15 @@ public class DB extends SQLiteOpenHelper {
         return db.delete(TABLE_NAME, COL_TYPE + "=?", new String[] { type });
     }
 
+    /*
+     * SQLiteDatabase.insert() から SQLiteStatement.executeInsert() への高速化の効果
+     * ZenFone5 23秒 => 18秒
+     * Nexis9 8秒 => 7秒
+     */
     public long insert(String type, String word, String desc) {
-        ContentValues val = new ContentValues();
-        val.put(COL_TYPE, type);
-        val.put(COL_WORD, word);
-        val.put(COL_DESC, desc);
-        return db.insert(TABLE_NAME, null, val);
+        insertStatement.clearBindings();
+        insertStatement.bindAllArgsAsStrings(new String[] { type, word, desc });
+        return insertStatement.executeInsert();
     }
 
     public int count(String type) {
