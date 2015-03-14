@@ -22,7 +22,7 @@
     <string name="dictionary_fuzzy_search_description">Search singular and plural in English.</string>
     <string name="search_fuzzy">Search fuzzy</string>
 
-    <string name="dictionary_filter_word">Filter to not invoke Google Translate</string>
+    <string name="dictionary_filter_word">Conditions to prevent malfunction</string>
     <string name="dictionary_filter_word_description">\"word\" is a sequence of characters that do not contain such as a space.\n\"string\" is a sequence of one or more multiple words separated by such as a space.</string>
     <string name="dictionary_filter_word_nihongo">String that contains Hiragana, Katakana, Kanji</string>
     <string name="dictionary_filter_word_num_sp">Word that contains the number, symbol</string>

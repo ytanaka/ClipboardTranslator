@@ -19,13 +19,13 @@
     <string name="below">下</string>
 
     <string name="dictionary_fuzzy_search">辞書のあいまい検索</string>
-    <string name="dictionary_fuzzy_search_description">英語の単数形、複数形で辞書を検索します。</string>
+    <string name="dictionary_fuzzy_search_description">英語の複数形、過去形などで辞書を検索します。</string>
     <string name="search_fuzzy">あいまい検索する</string>
 
-    <string name="dictionary_filter_word">Google翻訳を起動しない条件</string>
-    <string name="dictionary_filter_word_description">\"単語\"はスペースなどを含まない文字の並びです。\n\"文字列\"はスペースなどで区切られた１つ以上複数の単語の並びです。</string>
+    <string name="dictionary_filter_word">誤動作防止する条件</string>
+    <string name="dictionary_filter_word_description">\"単語\"はスペースなどを含まない文字の並びです。\n\"文字列\"はスペースなどで区切られた単語の並びです。</string>
     <string name="dictionary_filter_word_nihongo">ひらがな、カタカナ、漢字が含まれている文字列</string>
-    <string name="dictionary_filter_word_num_sp">数字／記号が含まれる単語</string>
+    <string name="dictionary_filter_word_num_sp">数字、記号が含まれる単語</string>
     <string name="dictionary_filter_word_alpha_low2up">途中でアルファベット小文字から大文字に変わる単語</string>
 
     <string name="display_allow_recent_thumbnail">Android履歴画面にサムネイルを表示する</string>
