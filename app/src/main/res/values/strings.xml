@@ -13,8 +13,12 @@
     <string name="install_google_translate">Install Google Translate</string>
     <string name="translate">Translate</string>
 
+    <string name="use_google_translate">Cooperation with Google translation app</string>
+    <string name="use_google_translate_description">Start the Google translation when a word is not found in the local dictionary of apps.</string>
+    <string name="use">Start</string>
+
     <string name="display_position">Display position</string>
-    <string name="display_position_description">When word is found in the local dictionary, app displays the translation over the original screen.\n(if not found, start the Google translated)</string>
+    <string name="display_position_description">When word is found in the local dictionary, app displays the translation over the original screen.</string>
     <string name="top">Top</string>
     <string name="below">Below</string>
 

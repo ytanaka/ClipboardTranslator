@@ -52,6 +52,14 @@ public class MyPreference {
         pref.edit().putBoolean(KEY_FILTER_WORD_NUM_SP, b).apply();
     }
 
+    private static final String KEY_USE_GOOGLE_TRANSLATE = "isUseGoogleTranslate";
+    public boolean isUseGoogleTranslate() {
+        return pref.getBoolean(KEY_USE_GOOGLE_TRANSLATE, true);
+    }
+    public void setUseGoogleTranslate(boolean b) {
+        pref.edit().putBoolean(KEY_USE_GOOGLE_TRANSLATE, b).apply();
+    }
+
     private static final String KEY_FILTER_WORD_ALPHA_LOW2UP = "isFilterWordAlphaLow2up";
     public boolean isFilterWordAlphaLow2up() {
         return pref.getBoolean(KEY_FILTER_WORD_ALPHA_LOW2UP, true);

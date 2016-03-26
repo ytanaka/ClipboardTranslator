@@ -76,14 +76,13 @@ public class DicActivity extends Activity {
 
         // 訳表示
         DB db = MyApplication.instance(this).getDb();
-        String word2 = "";
-        List<Item> items = new ArrayList<>();
+        String word2 = null;
         List<DB.Result> resultList = db.find(word, 200);
         if (resultList.size() == 0) {
             word2 = Logic.fuzzyMatchInDic(this, word);
-            resultList = db.find(word2, 200);
-            word2 = " (" + word2 + ")";
+            if (word2 != null) resultList = db.find(word2, 200);
         }
+        List<Item> items = new ArrayList<>();
         for (DB.Result i: resultList) {
             items.add(new Item(i.type, i.word, i.desc));
         }
@@ -94,7 +93,7 @@ public class DicActivity extends Activity {
 
         // タイトル部
         TextView tvTitle = (TextView) findViewById(R.id.textView_title);
-        tvTitle.setText(word + word2);
+        tvTitle.setText(word2 == null ? word : word + " (" + word2 + ")");
         findViewById(R.id.button_translate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -23,6 +23,16 @@ public class SettingActivity extends Activity {
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
         mPref = MyApplication.instance(this).getPref();
 
+        // Google翻訳との連携
+        final CheckBox checkBoxUseGoogleTranslate = (CheckBox) findViewById(R.id.checkBox_use_google_translate);
+        checkBoxUseGoogleTranslate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mPref.setUseGoogleTranslate(checkBoxUseGoogleTranslate.isChecked());
+            }
+        });
+        checkBoxUseGoogleTranslate.setChecked(mPref.isUseGoogleTranslate());
+
         // 表示位置
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup_display);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
